@@ -1,0 +1,52 @@
+const express = require('express')
+const routes = express.Router()
+
+// Rota = Recurso
+/**
+ * Métodos HTTP:
+ * 
+ * GET: Buscar uma informação do back-end
+ * POST: Criar uma informação no back-end
+ * PUT: Alterar uma informação no back-end
+ * DELETE: Deletar uma informação no back-end
+ */
+
+/**
+ * Tipos de parâmetros:
+ * 
+ * Query Params: Parâmetros nomeados enviados na rota apôs "?" (Filtros, paginação) Ex.: http://localhost:3333/listar?name=Frank
+ * Route Params: Parâmetros utilizados para identificar recursos Ex.: http://localhost:3333/user/1
+ * Request Body: Corpo da requisição, utilizado para criar ou alterar recursos
+ */
+
+// Método GET, sem parâmetros
+routes.get('/', (request, response) => {
+    return response.json({
+        name: 'Frank R de Oliveira',
+        curso: 'NodeJs',
+        instrutor: 'Diego Fernandes'
+    })
+})
+
+// Método GET, com query params
+http://localhost:3333/query?name=Frank
+routes.get('/query', (request, response) => {
+    const req = request.query
+    return response.send(req)
+})
+
+// Método GET, com route params
+// http://localhost:3333/params/3/Frank
+routes.get('/params/:id/:name', (request, response) => {
+    const req = request.params
+    return response.send(req)
+})
+
+// Método POST, com body request
+// http://localhost:3333/user
+ routes.post('/user', (request, response) => {
+    const req = request.body
+    return response.send(req)
+})
+
+module.exports = routes
